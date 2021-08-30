@@ -1,0 +1,15 @@
+# serverless.yml
+
+service: blindy-backend
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: server.handler
+    events:
+      - http: ANY /

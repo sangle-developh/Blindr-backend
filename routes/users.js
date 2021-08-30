@@ -1,7 +1,6 @@
 const express = require("express");
 const User = require("../models/User");
 const router = express.Router();
-const { getUser } = require("../models/User");
 
 router.get("/", async (req, res) => {
   const users = await User.find();
@@ -10,7 +9,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:username", async (req, res) => {
   try {
-    const user = await getUser(req.params.username);
+    const user = await User.findOne({ username: req.params.username });
     res.send(user);
   } catch {
     res.status(404);

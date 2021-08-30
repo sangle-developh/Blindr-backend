@@ -25,6 +25,4 @@ const schema = mongoose.Schema({
   isSpotifyConnected: Boolean,
 });
 
-module.exports.getUser = (username) => User.findOne({ username: username });
-
 module.exports = mongoose.model("Users", schema);
