@@ -9,6 +9,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:username", async (req, res) => {
+  console.log(req.params);
   try {
     const user = await User.findOne({ username: req.params.username });
     res.send(user);
@@ -30,18 +31,20 @@ router.get("/:username", async (req, res) => {
 //   }
 // });
 
-router.get("/couple", async (req, res) => {
-  console.log(req);
+router.get("/couple/:username", async (req, res) => {
+  console.log(req.params);
   try {
     const user = await User.findOne({ username: req.params.username });
     const users = await User.find();
     const couple = Matching.getCouple(user, users);
-    couple
-      .save()
-      .then(() =>
-        res.status(200).json({ success: true, msg: "A match!", couple: couple })
-      )
-      .catch((err) => res.status(400).send(err));
+    console.log(couple);
+    res.send(couple);
+    // couple
+    //   .save()
+    //   .then(() =>
+    //     res.status(200).json({ success: true, msg: "A match!", couple: couple })
+    //   )
+    //   .catch((err) => res.status(400).send(err));
   } catch {
     res.status(404);
     res.send({ error: "Couldn't match!" });

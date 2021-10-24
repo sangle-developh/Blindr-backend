@@ -11,6 +11,7 @@ function getCouple(userOne, users) {
       userTwo.gender === userOne.interest
     ) {
       const matchScore = getMatchScore(userOne, userTwo);
+      console.log(matchScore);
       if (matchScore > 0) {
         //It's a match!
         console.log("match score", matchScore);
@@ -103,7 +104,7 @@ function getAgeRange(ageRangeString) {
 }
 
 // console.log(
-//   getCouple([
+//   getCouple(
 //     {
 //       location: {
 //         coordinates: [],
@@ -119,47 +120,66 @@ function getAgeRange(ageRangeString) {
 //       keywords: [],
 //       __v: 0,
 //     },
-//     {
-//       location: {
-//         coordinates: [],
+//     [
+//       {
+//         location: {
+//           coordinates: [],
+//         },
+//         _id: "612d1252ef3a425a728d4865",
+//         name: "Sang Le",
+//         username: "lensang",
+//         dob: "1997-09-22T07:00:00.000Z",
+//         gender: "Male",
+//         interest: "Female",
+//         maxDistance: 5,
+//         ageRange: "20-30",
+//         keywords: [],
+//         __v: 0,
 //       },
-//       _id: "612d1278ef3a425a728d4867",
-//       name: "Thanh Vuong",
-//       username: "thanhvuong",
-//       dob: "1999-01-10T08:00:00.000Z",
-//       gender: "Male",
-//       interest: "Female",
-//       maxDistance: 5,
-//       ageRange: "20-30",
-//       keywords: [],
-//       __v: 0,
-//     },
-//     {
-//       location: {
-//         coordinates: [],
+//       {
+//         location: {
+//           coordinates: [],
+//         },
+//         _id: "612d1278ef3a425a728d4867",
+//         name: "Thanh Vuong",
+//         username: "thanhvuong",
+//         dob: "1999-01-10T08:00:00.000Z",
+//         gender: "Male",
+//         interest: "Female",
+//         maxDistance: 5,
+//         ageRange: "20-30",
+//         keywords: [],
+//         __v: 0,
 //       },
-//       _id: "616f9bf827f08a974c6f87ed",
-//       name: "Monica Huynh",
-//       username: "monica",
-//       dob: "2011-01-01T08:00:00.000Z",
-//       keywords: [],
-//       __v: 0,
-//       gender: "female",
-//     },
-//     {
-//       location: {
-//         coordinates: [],
+//       {
+//         location: {
+//           coordinates: [],
+//         },
+//         _id: "616f9bf827f08a974c6f87ed",
+//         name: "Monica Huynh",
+//         username: "monica",
+//         dob: "2011-01-01T08:00:00.000Z",
+//         keywords: [],
+//         __v: 0,
+//         gender: "female",
 //       },
-//       _id: "6173879a692a5937b449bf4e",
-//       name: "Han Dao",
-//       username: "handao",
-//       dob: "2003-01-16T07:00:00.000Z",
-//       gender: "Female",
-//       interest: "Male",
-//       maxDistance: 5,
-//       ageRange: "18-20",
-//       keywords: [],
-//       __v: 0,
-//     },
-//   ])
+//       {
+//         location: {
+//           coordinates: [],
+//         },
+//         _id: "6173879a692a5937b449bf4e",
+//         name: "Han Dao",
+//         username: "handao",
+//         dob: "2003-01-16T07:00:00.000Z",
+//         gender: "Female",
+//         interest: "Male",
+//         maxDistance: 5,
+//         ageRange: "18-20",
+//         keywords: [],
+//         __v: 0,
+//       },
+//     ]
+//   )
 // );
+
+module.exports = { getCouple };
