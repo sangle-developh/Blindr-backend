@@ -47,7 +47,7 @@ router.get("/couple/:username", async (req, res) => {
     //   .catch((err) => res.status(400).send(err));
   } catch {
     res.status(404);
-    res.send({ error: "Couldn't match!" });
+    res.send({ error: "User doesn't exist!" });
   }
 });
 
