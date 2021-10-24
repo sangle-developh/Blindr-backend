@@ -1,4 +1,3 @@
-const serverless = require("serverless-http");
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
@@ -6,6 +5,7 @@ const userRouter = require("./routes/users");
 const logger = require("./middlewares/logger");
 
 const app = express();
+var cors = require("cors");
 dotenv.config({ path: "./config/config.env" });
 const url = `mongodb+srv://admin:${process.env.PASSWORD}@cluster0.ba9sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
@@ -19,6 +19,7 @@ mongoose
     console.log("Connected to database");
     app.use(logger);
     app.use(express.json());
+    app.use(cors());
     app.use("/user", userRouter);
   })
   .catch((err) => {
