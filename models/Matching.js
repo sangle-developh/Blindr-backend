@@ -1,21 +1,17 @@
 const _ = require("underscore");
 
 function getCouple(userOne, users) {
-  let hasMatched = false;
-  while (hasMatched != true) {
-    // const [userOne, userTwo] = shuffle(users).slice(0, 2);
-    const [userTwo] = _.sample(users, [1]);
+  for (let i = 0; i < users.length; i++) {
+    // const [userTwo] = _.sample(users, [1]);
+    const userTwo = users[i];
 
     if (
       userOne.gender === userTwo.interest ||
       userTwo.gender === userOne.interest
     ) {
       const matchScore = getMatchScore(userOne, userTwo);
-      console.log(matchScore);
       if (matchScore > 0) {
         //It's a match!
-        console.log("match score", matchScore);
-        hasMatched = true;
         return [userOne, userTwo];
       }
     }
