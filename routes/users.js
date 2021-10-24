@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/User");
 const router = express.Router();
+const Matching = require("../models/Matching");
 
 router.get("/", async (req, res) => {
   const users = await User.find();
@@ -14,6 +15,36 @@ router.get("/:username", async (req, res) => {
   } catch {
     res.status(404);
     res.send({ error: "User doesn't exist!" });
+  }
+});
+
+// router.get("/couple", async (req, res) => {
+//   try {
+//     const user = await User.findOne({ username: req.params.username });
+//     const users = await User.find();
+//     const couple = Matching.getCouple(user, users);
+//     res.send(couple);
+//   } catch {
+//     res.status(404);
+//     res.send({ error: "Couldn't match!" });
+//   }
+// });
+
+router.get("/couple", async (req, res) => {
+  console.log(req);
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    const users = await User.find();
+    const couple = Matching.getCouple(user, users);
+    couple
+      .save()
+      .then(() =>
+        res.status(200).json({ success: true, msg: "A match!", couple: couple })
+      )
+      .catch((err) => res.status(400).send(err));
+  } catch {
+    res.status(404);
+    res.send({ error: "Couldn't match!" });
   }
 });
 
